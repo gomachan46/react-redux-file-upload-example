@@ -9,14 +9,16 @@ class FileDropzone extends Component {
         const { uploaded, files, onDrop } = this.props
         return (
             <div>
-                <Dropzone onDrop={this.onDrop.bind(this, onDrop)}>
+                <Dropzone
+                    onDropAccepted={this.onDrop.bind(this, onDrop)}
+                    accept="image/gif,image/jpeg,image/png,image/jpg" >
                     <div>
-                        <p>ファイルをアップロード</p>
+                        ファイルを指定またはドラッグ&ドロップ
+                        <p>形式: gif/png/jpeg/jpg</p>
                     </div>
                 </Dropzone>
                 <h1>{uploaded ? 'アップロード済' : '未アップロード'}</h1>
                 {files.map(file => {
-                    console.log(file)
                     return (
                         <div key={file.preview}>
                             <h1>{file.name}</h1>
