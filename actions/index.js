@@ -1,5 +1,6 @@
-export const uploadFile = () => {
+export const uploadFile = (files) => {
     return {
-        type: 'UPLOAD_FILE'
+        type: 'UPLOAD_FILE',
+        files: files
     }
 }

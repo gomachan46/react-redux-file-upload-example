@@ -4,14 +4,15 @@ import FileDropzone from '../components/FileDropzone'
 
 const mapStateToProps = (state) => {
     return {
-        uploaded: state.uploadFile.uploaded
+        uploaded: state.uploadFile.uploaded,
+        files: state.uploadFile.files
     }
 }
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        onDrop: () => {
-            dispatch(uploadFile())
+        onDrop: (files) => {
+            dispatch(uploadFile(files))
         }
     }
 }
