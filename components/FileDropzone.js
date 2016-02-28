@@ -2,22 +2,24 @@ import React, { PropTypes, Component } from 'react'
 import Dropzone from 'react-dropzone'
 
 class FileDropzone extends Component {
-    onDrop(onDrop, files) {
-        onDrop(files)
+    onDropAccepted(func, files) {
+        func(files)
     }
     render() {
-        const { uploaded, files, onDrop } = this.props
+        const { droped, files, message, dropFileAccepted, dropFileRejected } = this.props
         return (
             <div>
                 <Dropzone
-                    onDropAccepted={this.onDrop.bind(this, onDrop)}
+                    onDropAccepted={this.onDropAccepted.bind(this, dropFileAccepted)}
+                    onDropRejected={dropFileRejected}
                     accept="image/gif,image/jpeg,image/png,image/jpg" >
                     <div>
                         ファイルを指定またはドラッグ&ドロップ
                         <p>形式: gif/png/jpeg/jpg</p>
                     </div>
                 </Dropzone>
-                <h1>{uploaded ? 'アップロード済' : '未アップロード'}</h1>
+                <h1>{droped ? '選択済' : '未選択'}</h1>
+                <h1>{message}</h1>
                 {files.map(file => {
                     return (
                         <div key={file.preview}>
@@ -32,9 +34,11 @@ class FileDropzone extends Component {
 }
 
 FileDropzone.propTypes = {
-    uploaded: PropTypes.bool.isRequired,
+    droped: PropTypes.bool.isRequired,
     files: PropTypes.array.isRequired,
-    onDrop: PropTypes.func.isRequired
+    message: PropTypes.string.isRequired,
+    dropFileAccepted: PropTypes.func.isRequired,
+    dropFileRejected: PropTypes.func.isRequired
 }
 
 export default FileDropzone

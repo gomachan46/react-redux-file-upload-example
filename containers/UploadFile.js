@@ -1,18 +1,22 @@
 import { connect } from 'react-redux'
-import { uploadFile } from '../actions'
+import { dropFileAccepted, dropFileRejected } from '../actions'
 import FileDropzone from '../components/FileDropzone'
 
 const mapStateToProps = (state) => {
     return {
-        uploaded: state.uploadFile.uploaded,
-        files: state.uploadFile.files
+        droped: state.uploadFile.droped,
+        files: state.uploadFile.files,
+        message: state.uploadFile.message
     }
 }
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        onDrop: (files) => {
-            dispatch(uploadFile(files))
+        dropFileAccepted: (files) => {
+            dispatch(dropFileAccepted(files))
+        },
+        dropFileRejected: () => {
+            dispatch(dropFileRejected())
         }
     }
 }
