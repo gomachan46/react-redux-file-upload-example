@@ -1,8 +1,9 @@
 import React from 'react'
+import UploadFile from '../containers/UploadFile'
 
 const App = () => (
     <div>
-        <h1>Test</h1>
+        <UploadFile />
     </div>
 )
 
