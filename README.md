@@ -2,7 +2,7 @@
 
 React+Redux環境に `react-dropzone` を入れてみてフロント側のファイルアップロードをして遊んでみるテスト
 
-
+![react-dropzone](https://github.com/gomachan46/react-redux-file-upload-example/blob/master/react-dropzone.gif "react-dropzone")
 
 ## react-dropzone
 
